@@ -1,9 +1,9 @@
 import React from "react";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import TaskItemStatus from "./TaskItemStatus";
 import TaskItemTitle from "./TaskItemTitle";
 
-export default ({ task, updateTask }) => {
+export default ({ task, updateTask, deleteTask }) => {
   return (
     <View style={style.container}>
       <TaskItemStatus
@@ -14,6 +14,7 @@ export default ({ task, updateTask }) => {
         <TaskItemTitle
           task={task}
           onChange={newTitle => updateTask(task.id, { title: newTitle })}
+          onDelete={() => deleteTask(task.id)}
         />
       </View>
     </View>

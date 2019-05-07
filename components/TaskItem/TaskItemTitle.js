@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TaskItemTitleViewMode from "./TaskItemTitleViewMode";
 import TaskItemTitleEditMode from "./TaskItemTitleEditMode";
 
-export default ({ task, onChange }) => {
+export default ({ task, onChange, onDelete }) => {
   const [isEditMode, setEditMode] = useState(false);
 
   return isEditMode ? (
@@ -12,6 +12,10 @@ export default ({ task, onChange }) => {
       onChange={title => onChange(title)}
     />
   ) : (
-    <TaskItemTitleViewMode onEditMode={() => setEditMode(true)} task={task} />
+    <TaskItemTitleViewMode
+      onEditMode={() => setEditMode(true)}
+      task={task}
+      onDelete={onDelete}
+    />
   );
 };
