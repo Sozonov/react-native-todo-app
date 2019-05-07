@@ -3,7 +3,7 @@ import TaskItemTitleViewMode from "./TaskItemTitleViewMode";
 import TaskItemTitleEditMode from "./TaskItemTitleEditMode";
 
 export default ({ task, onChange }) => {
-  const [isEditMode, setEditMode] = useState(true);
+  const [isEditMode, setEditMode] = useState(false);
 
   return isEditMode ? (
     <TaskItemTitleEditMode

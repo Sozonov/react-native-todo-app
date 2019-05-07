@@ -9,6 +9,7 @@ export default ({ task, onChange, onViewMode }) => {
         onChangeText={text => setTitle(text)}
         value={title}
         style={style.input}
+        autoFocus={true}
       />
       <View style={style.button}>
         <Button

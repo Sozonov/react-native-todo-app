@@ -3,17 +3,17 @@ import { View } from "react-native";
 import TaskItemStatus from "./TaskItemStatus";
 import TaskItemTitle from "./TaskItemTitle";
 
-export default ({ task, changeTask }) => {
+export default ({ task, updateTask }) => {
   return (
     <View style={style.container}>
       <TaskItemStatus
         isCompleted={task.isCompleted}
-        onChange={isCompleted => changeTask(task.id, { isCompleted })}
+        onChange={() => updateTask(task.id, { isCompleted: !task.isCompleted })}
       />
       <View style={style.title}>
         <TaskItemTitle
           task={task}
-          onChange={newTitle => changeTask(task.id, { title: newTitle })}
+          onChange={newTitle => updateTask(task.id, { title: newTitle })}
         />
       </View>
     </View>
@@ -25,7 +25,7 @@ const style = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 10
   },
   title: {
     flexShrink: 1,
