@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-native";
+import { Button, FlatList } from "react-native";
 import TaskItem from "./TaskItem/index";
 import Header from "./Header";
 
@@ -8,30 +8,7 @@ const id = () => Math.round(Math.random() * 1000000);
 const useTasksList = () => {
   const defaultTasks = [
     { id: id(), title: "install expo", isCompleted: false },
-    { id: id(), title: "read share-db docs", isCompleted: true },
-    { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
-    // { id: id(), title: "read share-db docs", isCompleted: true },
+    { id: id(), title: "read share-db docs", isCompleted: true }
   ];
   const [tasks, setTasks] = useState(defaultTasks);
 
@@ -66,14 +43,17 @@ export default () => {
       <Header>
         Tasks list {nonCompletedCount} / {tasks.length}
       </Header>
-      {tasks.map(task => (
-        <TaskItem
-          task={task}
-          key={task.id}
-          updateTask={updateTask}
-          deleteTask={deleteTask}
-        />
-      ))}
+      <FlatList
+        data={tasks}
+        renderItem={({ item }) => (
+          <TaskItem
+            task={item}
+            key={item.id}
+            updateTask={updateTask}
+            deleteTask={deleteTask}
+          />
+        )}
+      />
       <Button onPress={() => addTask("new task")} title="Add task" />
     </>
   );
